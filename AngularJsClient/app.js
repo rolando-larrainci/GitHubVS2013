@@ -10,8 +10,6 @@ var productDetailsControllerId = 'ProductDetailsController';
 (function () {
     'use strict';
 
-    // faltaban comentarios
-
     // Create the module and define its dependencies.
     var app = angular.module(appId, ['ngRoute', appControllersId]);
 

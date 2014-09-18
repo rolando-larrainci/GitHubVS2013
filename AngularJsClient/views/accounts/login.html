@@ -1,11 +1,11 @@
-﻿<form name="loginForm" ng-controller="LoginController as loginCtrl" ng-submit="loginCtrl.loginUser()">
+﻿<form name="loginForm" ng-controller="LoginController as loginCtrl" ng-submit="loginUser()">
     <!--  Review Form -->
     <h4>Login in with an existing user</h4>
     <fieldset class="form-group">
-        <input ng-model="loginCtrl.loginData.userName" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" />
+        <input ng-model="loginData.userName" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" />
     </fieldset>
     <fieldset class="form-group">
-        <input ng-model="loginCtrl.loginData.password" type="password" class="form-control" placeholder="********" title="Password" />
+        <input ng-model="loginData.password" type="password" class="form-control" placeholder="********" title="Password" />
     </fieldset>
     <fieldset class="form-group">
         <input type="submit" class="btn btn-primary pull-right" value="Log in" />

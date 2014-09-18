@@ -4,8 +4,8 @@
     // Create the module and define its dependencies.
     var app = angular.module(appControllersId);
 
-    app.controller(loginControllerId, ['accountsService', function (accountsService) {
-        var self = this;
+    app.controller(loginControllerId, ['$scope', 'accountsService', function ($scope, accountsService) {
+        var self = $scope;
 
         self.loginData = {
             userName: '',
