@@ -1,8 +1,7 @@
 ﻿(function () {
     'use strict';
-
     var serviceId = 'accountsService';
-    angular.module(appId).factory(serviceId, ['$http', '$q', accountsService]);
+    angular.module(serviceModule).factory(serviceId, ['$http', '$q', accountsService]);
     function accountsService($http, $q) {
         // Define the functions and properties to reveal.
         var service = {

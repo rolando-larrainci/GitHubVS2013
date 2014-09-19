@@ -20,19 +20,19 @@ describe('verify test runner', function () {
 });
 
 describe('Create Account Controller Spec', function () {
-
-    beforeEach(module('CorsIntegration', ['ngRoute', 'CorsIntegration.Controllers']));
-    beforeEach(module('CorsIntegration.Controllers', []));
+    beforeEach(module('CorsIntegration.Controllers'));
+    beforeEach(module('CorsIntegration.Services'));
+    beforeEach(module('CorsIntegration'));
 
     describe('CreateAccountCtrl', function () {
         var scope, ctrl, $httpBackend;
 
         beforeEach(inject(function (_$httpBackend_, $rootScope, $controller) {
             $httpBackend = _$httpBackend_;
-            $httpBackend.expect(
-                    'POST',
+            //%40-->@ endode
+            $httpBackend.expectPOST(
                     'http://localhost:57496/api/Account/Register',
-                    { email: '', password: '', confirmPassword: ''})
+                    'email=user%40user.com&password=A123456z!&confirmPassword=A123456z!')
                 .respond(200);
 
             scope = $rootScope.$new();
@@ -40,11 +40,15 @@ describe('Create Account Controller Spec', function () {
         }));
 
         it('should register the new user', function () {
-            expect(ctrl.isRegistered).toBe(false);
-
+            expect(scope.isRegistered).toBe(undefined);
+            scope.registerUserData = {
+                email: 'user@user.com',
+                password: 'A123456z!',
+                confirmPassword: 'A123456z!'
+            };
+            scope.registerUser();
             $httpBackend.flush();
-
-            expect(ctrl.isRegistered).toBe(true);
+            expect(scope.isRegistered).toBe(true);
         });
 
 

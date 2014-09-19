@@ -14,6 +14,7 @@
         };
 
         self.registerUser = function () {
+            console.log('Llamo bien');
             accountsService.registerUser(self.registerUserData)
             .then(
             function (data) {

@@ -1,5 +1,6 @@
 ﻿// Module name is handy for logging
 var appId = 'CorsIntegration';
+var serviceModule = 'CorsIntegration.Services';
 var appControllersId = 'CorsIntegration.Controllers';
 var mainControllerId = 'MainController';
 var loginControllerId = 'LoginController';
@@ -11,9 +12,9 @@ var productDetailsControllerId = 'ProductDetailsController';
     'use strict';
 
     // Create the module and define its dependencies.
-    var app = angular.module(appId, ['ngRoute', appControllersId]);
-
-    angular.module(appControllersId, []);
+    var app = angular.module(appId, ['ngRoute', appControllersId, 'CorsIntegration.Services']);
+    var services=angular.module(serviceModule, []);
+    angular.module(appControllersId, ['CorsIntegration.Services']);
 
     app.config(function ($routeProvider) {
         $routeProvider
@@ -34,11 +35,11 @@ var productDetailsControllerId = 'ProductDetailsController';
                 controller: 'ProductDetailsController'
             })
             .otherwise({
-                redirectTo: '/products'
+                redirectTo: '/login'
             });
     });
 
-    app.config(['$httpProvider', function ($httpProvider) {
+    services.config(['$httpProvider', function ($httpProvider) {
         // Use x-www-form-urlencoded Content-Type
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 
