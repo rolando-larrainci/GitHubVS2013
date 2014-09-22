@@ -1,0 +1,10 @@
+﻿{
+  "name": "CorsIntegration",
+  "description": "CorsIntegration",
+  "version": "0.0.0",
+  "homepage": "",
+  "license": "",
+  "private": true,
+  "dependencies": {
+  }
+}
