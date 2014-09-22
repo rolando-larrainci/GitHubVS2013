@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -8,19 +7,18 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{CAADFA3C-BA8C-448B-A758-13BA24CFCC90}</ProjectGuid>
+    <ProjectGuid>{ADCD40F2-6CD2-45CF-82A3-CD5443405042}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AngularJsClient</RootNamespace>
-    <AssemblyName>AngularJsClient</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <RootNamespace>Smartition</RootNamespace>
+    <AssemblyName>Smartition</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
-    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,33 +57,20 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\Style\Content\bootstrap-theme.css" />
-    <Content Include="app\Style\Content\bootstrap-theme.min.css" />
-    <Content Include="app\Style\Content\bootstrap.css" />
-    <Content Include="app\Style\Content\bootstrap.min.css" />
-    <Content Include="app\controllers\mainController.js" />
-    <Content Include="app\Style\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="GruntFile.js" />
-    <Content Include="app\scripts\angular.min.js.map" />
-    <Content Include="packages.config" />
-    <Content Include="app\scripts\angular-route.min.js.map" />
-    <Content Include="app\Style\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="app\Style\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="app\Style\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="app\scripts\bootstrap.js" />
-    <Content Include="app\scripts\bootstrap.min.js" />
-    <None Include="app\scripts\jquery-2.1.1.intellisense.js" />
-    <Content Include="app\scripts\jquery-2.1.1.js" />
-    <Content Include="app\scripts\jquery-2.1.1.min.js" />
-    <Content Include="app\scripts\version.json" />
-    <Content Include="app\scripts\errors.json" />
-    <Content Include="app\scripts\angular-touch.min.js.map" />
-    <Content Include="app\scripts\angular-sanitize.min.js.map" />
-    <Content Include="app\scripts\angular-resource.min.js.map" />
-    <Content Include="app\scripts\angular-loader.min.js.map" />
-    <Content Include="app\scripts\angular-cookies.min.js.map" />
     <Content Include="app\scripts\angular-animate.min.js.map" />
+    <Content Include="app\scripts\angular-cookies.min.js.map" />
+    <Content Include="app\scripts\angular-loader.min.js.map" />
+    <Content Include="app\scripts\angular-resource.min.js.map" />
+    <Content Include="app\scripts\angular-route.min.js.map" />
+    <Content Include="app\scripts\angular-sanitize.min.js.map" />
+    <Content Include="app\scripts\angular-touch.min.js.map" />
+    <Content Include="app\scripts\angular.min.js.map" />
+    <Content Include="app\scripts\errors.json" />
     <Content Include="app\scripts\jquery-2.1.1.min.map" />
+    <Content Include="app\scripts\version.json" />
+    <Content Include="app\styles\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="app\styles\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="app\styles\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -94,11 +79,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\accounts\login\loginController.js" />
     <Content Include="app\app.js" />
-    <Content Include="app\controllers\accounts\loginController.js" />
-    <Content Include="app\controllers\products\productDetailsController.js" />
-    <Content Include="app\controllers\products\productsListController.js" />
-    <Content Include="app\controllers\accounts\createAccountController.js" />
+    <Content Include="app\accounts\register\createAccountController.js" />
+    <Content Include="app\main\mainController.js" />
+    <Content Include="app\products\detail\productDetailsController.js" />
+    <Content Include="app\products\list\productsListController.js" />
     <Content Include="app\scripts\angular-animate.js" />
     <Content Include="app\scripts\angular-animate.min.js" />
     <Content Include="app\scripts\angular-cookies.js" />
@@ -122,6 +108,8 @@
     <Content Include="app\scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="app\scripts\angular.js" />
     <Content Include="app\scripts\angular.min.js" />
+    <Content Include="app\scripts\bootstrap.js" />
+    <Content Include="app\scripts\bootstrap.min.js" />
     <Content Include="app\scripts\i18n\angular-locale_af-na.js" />
     <Content Include="app\scripts\i18n\angular-locale_af-za.js" />
     <Content Include="app\scripts\i18n\angular-locale_af.js" />
@@ -401,15 +389,23 @@
     <Content Include="app\scripts\i18n\angular-locale_zh.js" />
     <Content Include="app\scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="app\scripts\i18n\angular-locale_zu.js" />
+    <None Include="app\scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="app\scripts\jquery-2.1.1.js" />
+    <Content Include="app\scripts\jquery-2.1.1.min.js" />
     <None Include="app\scripts\_references.js" />
     <Content Include="app\services\accountsService.js" />
     <Content Include="app\services\productsService.js" />
-    <Content Include="app\Tests\accounts\createAccountControllerSpec.js" />
-    <Content Include="app\views\accounts\createAccount.html" />
-    <Content Include="app\views\accounts\login.html" />
-    <Content Include="app\views\index.html" />
-    <Content Include="app\views\products\productDetails.html" />
-    <Content Include="app\views\products\productsList.html" />
+    <Content Include="app\styles\Content\bootstrap-theme.css" />
+    <Content Include="app\styles\Content\bootstrap-theme.min.css" />
+    <Content Include="app\styles\Content\bootstrap.css" />
+    <Content Include="app\styles\Content\bootstrap.min.css" />
+    <Content Include="app\styles\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="app\accounts\register\createAccountControllerSpec.js" />
+    <Content Include="app\accounts\register\createAccount.html" />
+    <Content Include="app\accounts\login\login.html" />
+    <Content Include="app\main\index.html" />
+    <Content Include="app\products\detail\productDetails.html" />
+    <Content Include="app\products\list\productsList.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -417,16 +413,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\filters\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+    <Folder Include="app\Style\Content\" />
+    <Folder Include="app\Style\fonts\" />
+    <Folder Include="app\Tests\accounts\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
@@ -435,9 +430,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57731</DevelopmentServerPort>
+          <DevelopmentServerPort>54786</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:57731/</IISUrl>
+          <IISUrl>http://localhost:54786/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

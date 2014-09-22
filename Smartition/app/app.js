@@ -19,19 +19,19 @@ var productDetailsControllerId = 'ProductDetailsController';
     app.config(function ($routeProvider) {
         $routeProvider
             .when('/createLogin', {
-                templateUrl: '../app/views/accounts/createAccount.html',
+                templateUrl: '../accounts/register/createAccount.html',
                 controller: 'CreateAccountController'
             })
             .when('/login', {
-                templateUrl: '/app/views/accounts/login.html',
+                templateUrl: '../accounts/login/login.html',
                 controller: 'LoginController'
             })
             .when('/products', {
-                templateUrl: '/app/views/products/productsList.html',
+                templateUrl: '../products/list/productsList.html',
                 controller: 'ProductsListController'
             })
             .when('/productDetails', {
-                templateUrl: '/app/views/products/productDetails.html',
+                templateUrl: '../products/detail/productDetails.html',
                 controller: 'ProductDetailsController'
             })
             .otherwise({
