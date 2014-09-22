@@ -393,8 +393,8 @@
     <Content Include="app\scripts\jquery-2.1.1.js" />
     <Content Include="app\scripts\jquery-2.1.1.min.js" />
     <None Include="app\scripts\_references.js" />
-    <Content Include="app\services\accountsService.js" />
-    <Content Include="app\services\productsService.js" />
+    <Content Include="app\accounts\services\accountsService.js" />
+    <Content Include="app\products\services\productsService.js" />
     <Content Include="app\styles\Content\bootstrap-theme.css" />
     <Content Include="app\styles\Content\bootstrap-theme.min.css" />
     <Content Include="app\styles\Content\bootstrap.css" />
@@ -413,9 +413,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\filters\" />
-    <Folder Include="app\Style\Content\" />
-    <Folder Include="app\Style\fonts\" />
-    <Folder Include="app\Tests\accounts\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
