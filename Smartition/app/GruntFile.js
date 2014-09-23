@@ -7,39 +7,39 @@ module.exports = function (grunt) {
         // get the configuration info from package.json ----------------------------
         pkg: grunt.file.readJSON('package.json'),
 
-        copy: {
-            main: {
-                files: [{
-                    expand: true,
-                    flatten: true,
-                    filter: 'isFile',
-                    cwd: 'app/node_modules/bootstrap/',
-                    src: 'fonts/**',
-                    dest: 'styles/'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'node_modules/bootstrap/less',
-                        src: ['**/*.less','.csscomb.json','.csslintrc'],
-                        dest: 'styles/content/less/'
-                    },
-                     {
-                         expand: true,
-                         flatten: true,
-                         cwd: 'node_modules/bootstrap/less',
-                         src: 'mixins/*.less',
-                         dest: 'styles/content/less/mixins/'
-                     },
-                    {
-                        expand: true,
-                        flatten: true,
-                        filter: 'isFile',
-                        cwd: 'node_modules/bootstrap/dist/js',
-                        src: '**',
-                        dest: 'libs/'
-                    }]
-            }
-        },
+        //copy: {
+        //    main: {
+        //        files: [{
+        //            expand: true,
+        //            flatten: true,
+        //            filter: 'isFile',
+        //            cwd: 'app/node_modules/bootstrap/',
+        //            src: 'fonts/**',
+        //            dest: 'styles/'
+        //            },
+        //            {
+        //                expand: true,
+        //                cwd: 'node_modules/bootstrap/less',
+        //                src: ['**/*.less','.csscomb.json','.csslintrc'],
+        //                dest: 'styles/content/less/'
+        //            },
+        //             {
+        //                 expand: true,
+        //                 flatten: true,
+        //                 cwd: 'node_modules/bootstrap/less',
+        //                 src: 'mixins/*.less',
+        //                 dest: 'styles/content/less/mixins/'
+        //             },
+        //            {
+        //                expand: true,
+        //                flatten: true,
+        //                filter: 'isFile',
+        //                cwd: 'node_modules/bootstrap/dist/js',
+        //                src: '**',
+        //                dest: 'libs/'
+        //            }]
+        //    }
+        //},
         jshint: {
             options: {
                 reporter: require('jshint-stylish') // use jshint-stylish to make our errors look and read good
@@ -69,7 +69,7 @@ module.exports = function (grunt) {
                     strictMath: true,
                     sourceMap: true,
                     outputSourceFiles: true,
-                    sourceMapURL: 'node_modules/bootstrap/docs/dist/css/bootstrap.css.map',
+                    sourceMapURL: 'styles/bootstrap/docs/dist/css/bootstrap.css.map',
                     sourceMapFilename: 'dist/css/bootstrap.css.map'
                 },
                 files: {
