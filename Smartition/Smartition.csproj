@@ -57,6 +57,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\dist\css\bootstrap.css" />
+    <Content Include="app\dist\js\smartition.min.js" />
     <Content Include="app\GruntFile.js" />
     <Content Include="app\libs\angular-animate.min.js.map" />
     <Content Include="app\libs\angular-cookies.min.js.map" />
@@ -4172,6 +4174,7 @@
     <Content Include="app\styles\bootstrap\fonts\node_modules\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="app\styles\bootstrap\fonts\node_modules\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="app\styles\bootstrap\fonts\node_modules\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="app\dist\css\bootstrap.css.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

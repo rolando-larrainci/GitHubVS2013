@@ -39,7 +39,7 @@ module.exports = function (grunt) {
         //                dest: 'libs/'
         //            }]
         //    }
-        //},
+        //},  
         jshint: {
             options: {
                 reporter: require('jshint-stylish') // use jshint-stylish to make our errors look and read good
