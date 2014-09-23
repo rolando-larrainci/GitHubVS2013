@@ -9,9 +9,35 @@ module.exports = function (grunt) {
 
         copy: {
             main: {
-                files: [{ src: 'node_modules/bootstrap/fonts', dest: 'styles/fonts' },
-                        { src: 'node_modules/bootstrap/less', dest: 'styles/content/less' },
-                        { src: 'node_modules/bootstrap/dist/js/', dest: 'libs/' }]
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    filter: 'isFile',
+                    cwd: 'app/node_modules/bootstrap/',
+                    src: 'fonts/**',
+                    dest: 'styles/'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'node_modules/bootstrap/less',
+                        src: ['**/*.less','.csscomb.json','.csslintrc'],
+                        dest: 'styles/content/less/'
+                    },
+                     {
+                         expand: true,
+                         flatten: true,
+                         cwd: 'node_modules/bootstrap/less',
+                         src: 'mixins/*.less',
+                         dest: 'styles/content/less/mixins/'
+                     },
+                    {
+                        expand: true,
+                        flatten: true,
+                        filter: 'isFile',
+                        cwd: 'node_modules/bootstrap/dist/js',
+                        src: '**',
+                        dest: 'libs/'
+                    }]
             }
         },
         jshint: {
@@ -36,16 +62,79 @@ module.exports = function (grunt) {
                                                    'GruntFile.js']
                 }
             }
-        }
+        },
+        less: {
+            build: {
+                options: {
+                    strictMath: true,
+                    sourceMap: true,
+                    outputSourceFiles: true,
+                    sourceMapURL: 'node_modules/bootstrap/docs/dist/css/bootstrap.css.map',
+                    sourceMapFilename: 'dist/css/bootstrap.css.map'
+                },
+                files: {
+                    'dist/css/bootstrap.css': 'styles/content/less/bootstrap.less'
+                }
+            }
+        },
+        autoprefixer: {
+            options: {
+                browsers: [
+                  'Android 2.3',
+                  'Android >= 4',
+                  'Chrome >= 20',
+                  'Firefox >= 24', // Firefox 24 is the latest ESR
+                  'Explorer >= 8',
+                  'iOS >= 6',
+                  'Opera >= 12',
+                  'Safari >= 6'
+                ]
+            },
+            core: {
+                options: {
+                    map: true
+                },
+                src: 'dist/css/bootstrap.css'
+            },
+        },
+        usebanner: {
+            options: {
+                position: 'top',
+                banner: '<%= banner %>'
+            },
+            files: {
+                src: 'dist/css/*.css'
+            }
+        },
+        csscomb: {
+          options: {
+            config: 'styles/content/less/.csscomb.json'
+          },
+          dist: {
+            expand: true,
+            cwd: 'dist/css/',
+            src: ['*.css', '!*.min.css'],
+            dest: 'dist/css/'
+          }
+        },
 
 
     });
 
-    // LOAD GRUNT PLUGINS
+    // LOAD GRUNT
+    
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-csscomb');
+    grunt.loadNpmTasks('grunt-banner');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
+
+
+    grunt.registerTask('dist-css', ['less', 'autoprefixer', 'usebanner', 'csscomb']);
+
 
 };
