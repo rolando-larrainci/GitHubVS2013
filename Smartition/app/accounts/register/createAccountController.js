@@ -1,4 +1,7 @@
-﻿(function () {
+﻿/// <reference path="../../app.js" />
+
+
+(function () {
     'use strict';
 
     // Create the module and define its dependencies.
