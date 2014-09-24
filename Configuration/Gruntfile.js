@@ -54,14 +54,9 @@ module.exports = function (grunt) {
             },
             build: {
                 files: {
-                    'dist/js/smartition.min.js': [ 'libs/angular.js',
-                                                   'libs/angular-route.js',
-                                                   'libs/jquery-2.1.1.js',
-                                                   'accounts/**/*Service.js',
-                                                   'accounts/**/*Controller.js',
-                                                   'products/**/*Controller.js',
-                                                   'main/*Controller.js',
-                                                   'app.js']
+                    '../dist/js/smartition.min.js': ['../smarttuition/**/app.js',
+                                                    '../smarttuition/**/*Controller.js',
+                                                    '../smarttuition/**/*Service.js']
                 }
             }
         },
