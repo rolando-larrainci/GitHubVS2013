@@ -11,17 +11,19 @@ var productDetailsControllerId = 'ProductDetailsController';
     'use strict';
 
     // Create the module and define its dependencies.
-    var services = angular.module('CorsIntegration.Services', []);
+    angular.module('CorsIntegration.Services', []).config(servicesConfig);
     angular.module('CorsIntegration.Controllers.Products', ['CorsIntegration.Services']);
     angular.module('CorsIntegration.Controllers.Accounts', ['CorsIntegration.Services']);
+    var app=angular.module('CorsIntegration', [
+            'ngRoute',
+            'CorsIntegration.Controllers.Products',
+            'CorsIntegration.Controllers.Accounts',
+            'CorsIntegration.Services'
+        ])
+        .config(appConfig);
 
-
-    var app = angular.module('CorsIntegration', ['ngRoute',
-                                                'CorsIntegration.Controllers.Products',
-                                                'CorsIntegration.Controllers.Accounts',
-                                                'CorsIntegration.Services']);
-
-    app.config(['$routeProvider', function ($routeProvider) {
+    /* @ngInject */
+    function appConfig($routeProvider) {
         $routeProvider
             .when('/createLogin', {
                 templateUrl: 'core/accounts/register/createAccount.html',
@@ -42,9 +44,12 @@ var productDetailsControllerId = 'ProductDetailsController';
             .otherwise({
                 redirectTo: '/login'
             });
-    }]);
+    }
+    appConfig.$inject = ['$routeProvider'];;
 
-    services.config(['$httpProvider', function ($httpProvider) {
+
+    /* @ngInject */
+    function servicesConfig($httpProvider) {
         // Use x-www-form-urlencoded Content-Type
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 
@@ -90,12 +95,14 @@ var productDetailsControllerId = 'ProductDetailsController';
 
             return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
         }];
-    }]);
+    }
+    servicesConfig.$inject = ['$httpProvider'];;
 
 
     app.run(['$q', '$rootScope', function ($q, $rootScope) {}]);
 
-})();;(function () {
+})();
+(function () {
     'use strict';
     angular.module('CorsIntegration.Controllers.Accounts').controller("LoginController", loginController);
 
@@ -120,7 +127,8 @@ var productDetailsControllerId = 'ProductDetailsController';
         };
     }
     loginController.$inject = ['$scope', 'accountsService'];
-})();;(function () {
+})();
+(function () {
     'use strict';
 
     angular.module('CorsIntegration.Controllers.Accounts').controller('CreateAccountController', createAccountController);
@@ -151,7 +159,8 @@ var productDetailsControllerId = 'ProductDetailsController';
         };
     }
     createAccountController.$inject = ['$scope', 'accountsService'];
-})();;(function () {
+})();
+(function () {
     'use strict';
 
     angular.module('CorsIntegration.Controllers.Products').controller('ProductDetailsController',productDetailsController);
@@ -178,7 +187,8 @@ var productDetailsControllerId = 'ProductDetailsController';
         };
     }
     productDetailsController.$inject = ['productsService'];
-})();;(function () {
+})();
+(function () {
     'use strict';
 
     angular.module('CorsIntegration.Controllers.Products').controller('ProductsListController', productsListController);
@@ -205,7 +215,8 @@ var productDetailsControllerId = 'ProductDetailsController';
         };
     }
     productsListController.$inject = ['productsService'];
-})();;(function () {
+})();
+(function () {
     'use strict';
     var serviceId = 'accountsService';
     angular.module('CorsIntegration.Services').factory(accountsService, ['$http', '$q', accountsService]);
