@@ -1,13 +1,10 @@
-﻿/// <reference path="../../app.js" />
-
-
 (function () {
     'use strict';
 
-    // Create the module and define its dependencies.
-    var app = angular.module('CorsIntegration.Controllers');
+    angular.module('CorsIntegration.Controllers.Accounts').controller('CreateAccountController', createAccountController);
 
-    app.controller('CreateAccountController', ['$scope', 'accountsService', function ($scope, accountsService) {
+    /* @ngInject */
+    function createAccountController($scope, accountsService) {
         var self = $scope;
 
         self.registerUserData = {
@@ -30,5 +27,5 @@
                 console.log(status);
             });
         };
-    }]);
+    }
 })();

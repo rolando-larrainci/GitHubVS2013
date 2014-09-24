@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
     'use strict';
     var serviceId = 'accountsService';
     angular.module('CorsIntegration.Services').factory(accountsService, ['$http', '$q', accountsService]);

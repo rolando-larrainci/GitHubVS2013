@@ -1,12 +1,10 @@
 ﻿(function () {
     'use strict';
+    angular.module('CorsIntegration.Controllers.Accounts').controller("LoginController", loginController);
 
-    // Create the module and define its dependencies.
-    var app = angular.module('CorsIntegration.Controllers');
-
-    app.controller("LoginController", ['$scope', 'accountsService', function ($scope, accountsService) {
+    /* @ngInject */
+    function loginController($scope, accountsService) {
         var self = $scope;
-
         self.loginData = {
             userName: '',
             password: ''
@@ -23,5 +21,5 @@
                 console.log(status);
             });
         };
-    }]);
+    }
 })();

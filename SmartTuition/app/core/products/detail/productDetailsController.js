@@ -1,10 +1,10 @@
-﻿(function () {
+(function () {
     'use strict';
 
-    // Create the module and define its dependencies.
-    var app = angular.module('CorsIntegration.Controllers');
+    angular.module('CorsIntegration.Controllers.Products').controller('ProductDetailsController',productDetailsController);
 
-    app.controller('ProductDetailsController', ['productsService', function (productsService) {
+    /* @ngInject */
+    function productDetailsController(productsService) {
         var self = this;
 
         self.loginData = {
@@ -13,7 +13,7 @@
         };
 
         self.loginUser = function () {
-            accountsService.loginUser(self.loginData).then(function (data) {
+            productsService.loginUser(self.loginData).then(function (data) {
                 self.isLoggedIn = true;
                 self.userName = data.userName;
                 self.bearerToken = data.access_token;
@@ -23,5 +23,5 @@
                 console.log(status);
             });
         };
-    }]);
+    }
 })();
