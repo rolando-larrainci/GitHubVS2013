@@ -7,46 +7,37 @@ module.exports = function (grunt) {
         // get the configuration info from package.json ----------------------------
         pkg: grunt.file.readJSON('package.json'),
 
-        //copy: {
-        //    main: {
-        //        files: [{
-        //            expand: true,
-        //            flatten: true,
-        //            filter: 'isFile',
-        //            cwd: 'app/node_modules/bootstrap/',
-        //            src: 'fonts/**',
-        //            dest: 'styles/'
-        //            },
-        //            {
-        //                expand: true,
-        //                cwd: 'node_modules/bootstrap/less',
-        //                src: ['**/*.less','.csscomb.json','.csslintrc'],
-        //                dest: 'styles/content/less/'
-        //            },
-        //             {
-        //                 expand: true,
-        //                 flatten: true,
-        //                 cwd: 'node_modules/bootstrap/less',
-        //                 src: 'mixins/*.less',
-        //                 dest: 'styles/content/less/mixins/'
-        //             },
-        //            {
-        //                expand: true,
-        //                flatten: true,
-        //                filter: 'isFile',
-        //                cwd: 'node_modules/bootstrap/dist/js',
-        //                src: '**',
-        //                dest: 'libs/'
-        //            }]
-        //    }
-        //},  
-        jshint: {
+       jshint: {
             options: {
-                reporter: require('jshint-stylish') // use jshint-stylish to make our errors look and read good
+                reporter: require('jshint-stylish') 
+            },
+            build: ['Grunfile.js', 'app/**/*.js']
+        },
+        ngAnnotate: {
+            options: {
+                singleQuotes: true,
+            },
+            gen: {
+                files: [{
+                             expand: true,
+                             src: ['../smarttuition/**/app.js',
+                                   '../smarttuition/**/*Controller.js',
+                                   '../smarttuition/**/*Service.js'],
+                  
+                         }]
             },
 
-            // when this task is run, lint the Gruntfile and all js files in the app
-            build: ['Grunfile.js', 'app/**/*.js']
+        },
+        concat: {
+            options: {
+                separator: ';'
+            },
+            dist: {
+                src: ['../smarttuition/**/app.js',
+                           '../smarttuition/**/*Controller.js',
+                           '../smarttuition/**/*Service.js'],
+                dest: '../dist/js/smartition.min.js'
+            }
         },
         uglify: {//when uglify run as a result we have all the application minified in the smartition.min.js file 
             options: {
@@ -60,6 +51,8 @@ module.exports = function (grunt) {
                 }
             }
         },
+
+        //css 
         less: {
             build: {
                 options: {
@@ -104,16 +97,17 @@ module.exports = function (grunt) {
             }
         },
         csscomb: {
-          options: {
-            config: 'styles/content/less/.csscomb.json'
-          },
-          dist: {
-            expand: true,
-            cwd: 'dist/css/',
-            src: ['*.css', '!*.min.css'],
-            dest: 'dist/css/'
-          }
+            options: {
+                config: 'styles/content/less/.csscomb.json'
+            },
+            dist: {
+                expand: true,
+                cwd: 'dist/css/',
+                src: ['*.css', '!*.min.css'],
+                dest: 'dist/css/'
+            }
         },
+
 
 
     });
@@ -129,8 +123,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-banner');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
-
+    grunt.loadNpmTasks('grunt-ng-annotate');
+   
     grunt.registerTask('default', ['jshint', 'uglify', 'less', 'autoprefixer', 'usebanner', 'csscomb']);
+    grunt.registerTask('test', ['ngAnnotate', 'concat']);
     grunt.registerTask('dist-css', ['less', 'autoprefixer', 'usebanner', 'csscomb']);
 
 

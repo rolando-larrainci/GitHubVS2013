@@ -9,7 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJsClient.Test", "Ang
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmarTuition", "SmartTuition\SmarTuition.csproj", "{D9A737DA-CD93-4279-9FDC-FC9524958B7B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{F93B1CF4-22C5-410A-A6B5-17180FB7DF65}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{4D8BAC08-DEA7-4E50-8D97-BA1EF98A1E3C}"
+	ProjectSection(SolutionItems) = preProject
+		Configuration\Gruntfile.js = Configuration\Gruntfile.js
+		Configuration\package.json = Configuration\package.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
