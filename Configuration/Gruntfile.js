@@ -21,9 +21,9 @@ module.exports = function (grunt) {
                 dest:'../smarttuition/dist/js/smarttuition.js'
             },
             postBuild: {
-               '../smarttuition/dist/js/smarttuition.js': ['../smarttuition/**/app.js',
-                                                           '../smarttuition/**/*Controller.js',
-                                                           '../smarttuition/**/*Service.js']
+                        src: ['../smarttuition/app/libs/**.min.js',
+                              '../smarttuition/dist/js/.temp/smarttuition.min.js'],
+                        dest:'../smarttuition/dist/js/smarttuition.min.js'
                          }
         },
         ngAnnotate: {
@@ -44,7 +44,7 @@ module.exports = function (grunt) {
             },
             build: {
                 files: {
-                    '../smarttuition/dist/js/smarttuition.min.js': ['../smarttuition/dist/js/smarttuition.js']
+                    '../smarttuition/dist/js/.temp/smarttuition.min.js': ['../smarttuition/dist/js/smarttuition.js']
                 }
             }
         },
