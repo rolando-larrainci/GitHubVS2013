@@ -1,24 +1,18 @@
 // Module name is handy for logging
 var appId = 'CorsIntegration';
-var serviceModule = 'CorsIntegration.Services';
-var appControllersId = 'CorsIntegration.Controllers';
-var loginControllerId = 'LoginController';
-var createAccountsControllerId = 'CreateAccountController';
-var productsListControllerId = 'ProductsListController';
-var productDetailsControllerId = 'ProductDetailsController';
+
 
 (function () {
     'use strict';
 
-    // Create the module and define its dependencies.
-    angular.module('CorsIntegration.Services', []).config(servicesConfig);
-    angular.module('CorsIntegration.Controllers.Products', ['CorsIntegration.Services']);
-    angular.module('CorsIntegration.Controllers.Accounts', ['CorsIntegration.Services']);
+    angular.module('CorsIntegration.Services.Accounts', []).config(servicesConfig);
+    angular.module('CorsIntegration.Controllers.Products', ['CorsIntegration.Services.Accounts']);
+    angular.module('CorsIntegration.Controllers.Accounts', ['CorsIntegration.Services.Accounts']);
     var app=angular.module('CorsIntegration', [
             'ngRoute',
             'CorsIntegration.Controllers.Products',
             'CorsIntegration.Controllers.Accounts',
-            'CorsIntegration.Services'
+            'CorsIntegration.Services.Accounts'
         ])
         .config(appConfig);
 
@@ -55,11 +49,7 @@ var productDetailsControllerId = 'ProductDetailsController';
 
         // Override $http service's default transformRequest
         $httpProvider.defaults.transformRequest = [function (data) {
-            /**
-             * The workhorse; converts an object to x-www-form-urlencoded serialization.
-             * @param {Object} obj
-             * @return {String}
-             */
+
             var param = function (obj) {
                 var query = '';
                 var name, value, fullSubName, subName, subValue, innerObj, i;
@@ -104,10 +94,11 @@ var productDetailsControllerId = 'ProductDetailsController';
 })();
 (function () {
     'use strict';
-    angular.module('CorsIntegration.Controllers.Accounts').controller("LoginController", loginController);
+    var controllerId = "LoginController";
+    angular.module('CorsIntegration.Controllers.Accounts').controller(controllerId, loginController);
 
     /* @ngInject */
-    function loginController($scope, accountsService) {
+    function loginController($scope, LoginService) {
         var self = $scope;
         self.loginData = {
             userName: '',
@@ -115,7 +106,7 @@ var productDetailsControllerId = 'ProductDetailsController';
         };
 
         self.loginUser = function () {
-            accountsService.loginUser(self.loginData).then(function (data) {
+            LoginService.loginUser(self.loginData).then(function (data) {
                 self.isLoggedIn = true;
                 self.userName = data.userName;
                 self.bearerToken = data.access_token;
@@ -126,15 +117,15 @@ var productDetailsControllerId = 'ProductDetailsController';
             });
         };
     }
-    loginController.$inject = ['$scope', 'accountsService'];
+    loginController.$inject = ['$scope', 'LoginService'];
 })();
 (function () {
     'use strict';
-
-    angular.module('CorsIntegration.Controllers.Accounts').controller('CreateAccountController', createAccountController);
+    var controllerId = 'CreateAccountController';
+    angular.module('CorsIntegration.Controllers.Accounts').controller(controllerId, createAccountController);
 
     /* @ngInject */
-    function createAccountController($scope, accountsService) {
+    function createAccountController($scope, createAccountService) {
         var self = $scope;
 
         self.registerUserData = {
@@ -145,7 +136,7 @@ var productDetailsControllerId = 'ProductDetailsController';
 
         self.registerUser = function () {
             console.log('Llamo bien');
-            accountsService.registerUser(self.registerUserData)
+            createAccountService.registerUser(self.registerUserData)
             .then(
             function (data) {
                 self.isRegistered = true;
@@ -158,12 +149,12 @@ var productDetailsControllerId = 'ProductDetailsController';
             });
         };
     }
-    createAccountController.$inject = ['$scope', 'accountsService'];
+    createAccountController.$inject = ['$scope', 'createAccountService'];
 })();
 (function () {
     'use strict';
-
-    angular.module('CorsIntegration.Controllers.Products').controller('ProductDetailsController',productDetailsController);
+    var controllerId = 'ProductDetailsController';
+    angular.module('CorsIntegration.Controllers.Products').controller(controllerId, productDetailsController);
 
     /* @ngInject */
     function productDetailsController(productsService) {
@@ -190,8 +181,8 @@ var productDetailsControllerId = 'ProductDetailsController';
 })();
 (function () {
     'use strict';
-
-    angular.module('CorsIntegration.Controllers.Products').controller('ProductsListController', productsListController);
+    var controllerId = 'ProductsListController';
+    angular.module('CorsIntegration.Controllers.Products').controller(controllerId, productsListController);
 
     /* @ngInject */
     function productsListController(productsService) {
@@ -218,35 +209,20 @@ var productDetailsControllerId = 'ProductDetailsController';
 })();
 (function () {
     'use strict';
-    var serviceId = 'accountsService';
-    angular.module('CorsIntegration.Services').factory(accountsService, ['$http', '$q', accountsService]);
-    function accountsService($http, $q) {
+    var serviceId = 'LoginService';
+    angular.module('CorsIntegration.Services.Accounts').factory(serviceId, loginService);
+
+    /* @ngInject */
+    function loginService($http, $q) {
         // Define the functions and properties to reveal.
         var service = {
-            registerUser: registerUser,
             loginUser: loginUser,
             getValues: getValues,
         };
-        var serverBaseUrl = "http://localhost:57496";
 
-        return service;
+        var serverBaseUrl = "http://localhost:57496";
         var accessToken = "";
-        function registerUser(userData) {
-            var accountUrl = serverBaseUrl + "/api/Account/Register";
-            var deferred = $q.defer();
-            $http({
-                method: 'POST',
-                url: accountUrl,
-                data: userData,
-            }).success(function (data, status, headers, cfg) {
-                console.log(data);
-                deferred.resolve(data);
-            }).error(function (err, status) {
-                console.log(err);
-                deferred.reject(status);
-            });
-            return deferred.promise;
-        }
+     
         function loginUser(userData) {
             var tokenUrl = serverBaseUrl + "/Token";
             if (!userData.grant_type) {
@@ -269,6 +245,71 @@ var productDetailsControllerId = 'ProductDetailsController';
             });
             return deferred.promise;
         }
+
+        function getValues() {
+            var url = serverBaseUrl + "/api/values/";
+            var deferred = $q.defer();
+            $http({
+                method: 'GET',
+                url: url,
+                headers: getHeaders(),
+            }).success(function (data, status, headers, cfg) {
+                console.log(data);
+                deferred.resolve(data);
+            }).error(function (err, status) {
+                console.log(err);
+                deferred.reject(status);
+            });
+            return deferred.promise;
+        }
+
+        function getHeaders() {
+            if (accessToken) {
+                return { "Authorization": "Bearer " + accessToken };
+            }
+            return { "Authorization": "Bearer " + accessToken };
+
+        }
+
+        return service;
+
+    }
+    loginService.$inject = ['$http', '$q'];
+
+})();
+(function () {
+    'use strict';
+    var serviceId = 'createAccountService';
+    angular.module('CorsIntegration.Services.Accounts').factory(serviceId,accountsService);
+
+    /* @ngInject */
+    function accountsService($http, $q) {
+        var service = {
+            registerUser: registerUser,
+            getValues: getValues,
+        };
+        var serverBaseUrl = "http://localhost:57496";
+
+        var accessToken = "";
+
+        function registerUser(userData) {
+            var accountUrl = serverBaseUrl + "/api/Account/Register";
+            var deferred = $q.defer();
+            $http({
+                method: 'POST',
+                url: accountUrl,
+                data: userData,
+            }).success(function (data, status, headers, cfg) {
+                console.log(data);
+                deferred.resolve(data);
+            }).error(function (err, status) {
+                console.log(err);
+                deferred.reject(status);
+            });
+            return deferred.promise;
+        }
+        
+
         function getValues() {
             var url = serverBaseUrl + "/api/values/";
             var deferred = $q.defer();
@@ -290,6 +331,11 @@ var productDetailsControllerId = 'ProductDetailsController';
             if (accessToken) {
                 return { "Authorization": "Bearer " + accessToken };
             }
+            return { "Authorization": "Bearer " + accessToken };
         }
+
+        return service;
+
     }
+    accountsService.$inject = ['$http', '$q'];
 })();

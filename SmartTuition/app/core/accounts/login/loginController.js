@@ -4,7 +4,7 @@
     angular.module('CorsIntegration.Controllers.Accounts').controller(controllerId, loginController);
 
     /* @ngInject */
-    function loginController($scope, accountsService) {
+    function loginController($scope, LoginService) {
         var self = $scope;
         self.loginData = {
             userName: '',
@@ -12,7 +12,7 @@
         };
 
         self.loginUser = function () {
-            accountsService.loginUser(self.loginData).then(function (data) {
+            LoginService.loginUser(self.loginData).then(function (data) {
                 self.isLoggedIn = true;
                 self.userName = data.userName;
                 self.bearerToken = data.access_token;

@@ -1,23 +1,18 @@
 // Module name is handy for logging
 var appId = 'CorsIntegration';
-var serviceModule = 'CorsIntegration.Services';
-var appControllersId = 'CorsIntegration.Controllers';
-var loginControllerId = 'LoginController';
-var createAccountsControllerId = 'CreateAccountController';
-var productsListControllerId = 'ProductsListController';
-var productDetailsControllerId = 'ProductDetailsController';
+
 
 (function () {
     'use strict';
 
     angular.module('CorsIntegration.Services.Accounts', []).config(servicesConfig);
-    angular.module('CorsIntegration.Controllers.Products', ['CorsIntegration.Services']);
-    angular.module('CorsIntegration.Controllers.Accounts', ['CorsIntegration.Services']);
+    angular.module('CorsIntegration.Controllers.Products', ['CorsIntegration.Services.Accounts']);
+    angular.module('CorsIntegration.Controllers.Accounts', ['CorsIntegration.Services.Accounts']);
     var app=angular.module('CorsIntegration', [
             'ngRoute',
             'CorsIntegration.Controllers.Products',
             'CorsIntegration.Controllers.Accounts',
-            'CorsIntegration.Services'
+            'CorsIntegration.Services.Accounts'
         ])
         .config(appConfig);
 
@@ -53,11 +48,7 @@ var productDetailsControllerId = 'ProductDetailsController';
 
         // Override $http service's default transformRequest
         $httpProvider.defaults.transformRequest = [function (data) {
-            /**
-             * The workhorse; converts an object to x-www-form-urlencoded serialization.
-             * @param {Object} obj
-             * @return {String}
-             */
+
             var param = function (obj) {
                 var query = '';
                 var name, value, fullSubName, subName, subValue, innerObj, i;

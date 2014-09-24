@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\core\accounts\login\loginService.js" />
     <Content Include="app\libs\angular-animate.min.js.map" />
     <Content Include="app\libs\angular-loader.min.js.map" />
     <Content Include="app\libs\jquery-2.1.1.min.map" />
@@ -174,7 +175,7 @@
     <None Include="app\libs\jquery-2.1.1.intellisense.js" />
     <Content Include="app\libs\jquery-2.1.1.js" />
     <Content Include="app\libs\jquery-2.1.1.min.js" />
-    <Content Include="app\core\accounts\services\accountsService.js" />
+    <Content Include="app\core\accounts\register\createAccountsService.js" />
     <Content Include="app\core\accounts\register\createAccountControllerSpec.js" />
     <Content Include="app\core\accounts\register\createAccount.html" />
     <Content Include="app\core\accounts\login\login.html" />
@@ -187,6 +188,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\core\accounts\services\" />
     <Folder Include="app\shared\" />
   </ItemGroup>
   <ItemGroup>

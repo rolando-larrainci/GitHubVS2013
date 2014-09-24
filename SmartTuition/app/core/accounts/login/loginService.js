@@ -1,34 +1,19 @@
 (function () {
     'use strict';
-    var serviceId = 'accountsService';
-    angular.module('CorsIntegration.Services.Accounts').factory(accountsService, ['$http', '$q', accountsService]);
-    function accountsService($http, $q) {
+    var serviceId = 'LoginService';
+    angular.module('CorsIntegration.Services.Accounts').factory(serviceId, loginService);
+
+    /* @ngInject */
+    function loginService($http, $q) {
         // Define the functions and properties to reveal.
         var service = {
-            registerUser: registerUser,
             loginUser: loginUser,
             getValues: getValues,
         };
-        var serverBaseUrl = "http://localhost:57496";
 
-        return service;
+        var serverBaseUrl = "http://localhost:57496";
         var accessToken = "";
-        function registerUser(userData) {
-            var accountUrl = serverBaseUrl + "/api/Account/Register";
-            var deferred = $q.defer();
-            $http({
-                method: 'POST',
-                url: accountUrl,
-                data: userData,
-            }).success(function (data, status, headers, cfg) {
-                console.log(data);
-                deferred.resolve(data);
-            }).error(function (err, status) {
-                console.log(err);
-                deferred.reject(status);
-            });
-            return deferred.promise;
-        }
+     
         function loginUser(userData) {
             var tokenUrl = serverBaseUrl + "/Token";
             if (!userData.grant_type) {
@@ -51,6 +36,7 @@
             });
             return deferred.promise;
         }
+
         function getValues() {
             var url = serverBaseUrl + "/api/values/";
             var deferred = $q.defer();
@@ -67,11 +53,17 @@
             });
             return deferred.promise;
         }
-        // we have to include the Bearer token with each call to the Web API controllers. 
+
         function getHeaders() {
             if (accessToken) {
                 return { "Authorization": "Bearer " + accessToken };
             }
+            return { "Authorization": "Bearer " + accessToken };
+
         }
+
+        return service;
+
     }
+
 })();

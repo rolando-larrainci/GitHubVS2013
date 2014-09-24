@@ -4,7 +4,7 @@
     angular.module('CorsIntegration.Controllers.Accounts').controller(controllerId, createAccountController);
 
     /* @ngInject */
-    function createAccountController($scope, accountsService) {
+    function createAccountController($scope, createAccountService) {
         var self = $scope;
 
         self.registerUserData = {
@@ -15,7 +15,7 @@
 
         self.registerUser = function () {
             console.log('Llamo bien');
-            accountsService.registerUser(self.registerUserData)
+            createAccountService.registerUser(self.registerUserData)
             .then(
             function (data) {
                 self.isRegistered = true;

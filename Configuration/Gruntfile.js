@@ -16,14 +16,14 @@ module.exports = function (grunt) {
         concat: {
             dist: {
                 src: ['../smarttuition/**/app.js',
-                                                            '../smarttuition/**/*Controller.js',
-                                                            '../smarttuition/**/*Service.js'],
+                      '../smarttuition/**/*Controller.js',
+                      '../smarttuition/**/*Service.js'],
                 dest:'../smarttuition/dist/js/smarttuition.js'
             },
             postBuild: {
                '../smarttuition/dist/js/smarttuition.js': ['../smarttuition/**/app.js',
-                                                    '../smarttuition/**/*Controller.js',
-                                                    '../smarttuition/**/*Service.js']
+                                                           '../smarttuition/**/*Controller.js',
+                                                           '../smarttuition/**/*Service.js']
                          }
         },
         ngAnnotate: {
