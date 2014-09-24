@@ -13,41 +13,38 @@ module.exports = function (grunt) {
             },
             build: ['Grunfile.js', 'app/**/*.js']
         },
+        concat: {
+            dist: {
+                src: ['../smarttuition/**/app.js',
+                                                            '../smarttuition/**/*Controller.js',
+                                                            '../smarttuition/**/*Service.js'],
+                dest:'../smarttuition/dist/js/smarttuition.js'
+            },
+            postBuild: {
+               '../smarttuition/dist/js/smarttuition.js': ['../smarttuition/**/app.js',
+                                                    '../smarttuition/**/*Controller.js',
+                                                    '../smarttuition/**/*Service.js']
+                         }
+        },
         ngAnnotate: {
             options: {
                 singleQuotes: true,
             },
             gen: {
                 files: [{
-                             expand: true,
-                             src: ['../smarttuition/**/app.js',
-                                   '../smarttuition/**/*Controller.js',
-                                   '../smarttuition/**/*Service.js'],
-                  
-                         }]
+                    expand: true,
+                    src: ['../smarttuition/dist/js/smarttuition.js'],
+                }]
             },
 
         },
-        concat: {
-            options: {
-                separator: ';'
-            },
-            dist: {
-                src: ['../smarttuition/**/app.js',
-                           '../smarttuition/**/*Controller.js',
-                           '../smarttuition/**/*Service.js'],
-                dest: '../dist/js/smartition.min.js'
-            }
-        },
         uglify: {//when uglify run as a result we have all the application minified in the smartition.min.js file 
             options: {
-                banner: '\n/* <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %>*/\n'
+                banner: '\n/* <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd hh:MM") %>*/\n'
             },
             build: {
                 files: {
-                    '../dist/js/smartition.min.js': ['../smarttuition/**/app.js',
-                                                    '../smarttuition/**/*Controller.js',
-                                                    '../smarttuition/**/*Service.js']
+                    '../smarttuition/dist/js/smarttuition.min.js': ['../smarttuition/dist/js/smarttuition.js']
                 }
             }
         },
@@ -124,9 +121,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-ng-annotate');
-   
+    grunt.loadNpmTasks('grunt-contrib-concat');
+
     grunt.registerTask('default', ['jshint', 'uglify', 'less', 'autoprefixer', 'usebanner', 'csscomb']);
-    grunt.registerTask('test', ['ngAnnotate', 'concat']);
+    grunt.registerTask('test', ['concat:dist', 'ngAnnotate']);
     grunt.registerTask('dist-css', ['less', 'autoprefixer', 'usebanner', 'csscomb']);
 
 

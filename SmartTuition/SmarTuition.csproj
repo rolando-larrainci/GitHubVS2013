@@ -63,7 +63,8 @@
     <Content Include="app\libs\version.json" />
     <Content Include="app\styles\bootstrap.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="dist\js\SmartTuition.min.js" />
+    <Content Include="dist\js\smarttuition.js" />
+    <Content Include="dist\js\smarttuition.min.js" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>

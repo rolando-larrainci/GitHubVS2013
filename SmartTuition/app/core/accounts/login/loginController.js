@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
     'use strict';
     angular.module('CorsIntegration.Controllers.Accounts').controller("LoginController", loginController);
 
