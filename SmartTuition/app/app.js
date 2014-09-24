@@ -10,8 +10,7 @@ var productDetailsControllerId = 'ProductDetailsController';
 (function () {
     'use strict';
 
-    // Create the module and define its dependencies.
-    angular.module('CorsIntegration.Services', []).config(servicesConfig);
+    angular.module('CorsIntegration.Services.Accounts', []).config(servicesConfig);
     angular.module('CorsIntegration.Controllers.Products', ['CorsIntegration.Services']);
     angular.module('CorsIntegration.Controllers.Accounts', ['CorsIntegration.Services']);
     var app=angular.module('CorsIntegration', [

@@ -1,5 +1,5 @@
 ﻿{
-  "name": "smartition",
+  "name": "smartuition",
   "version": "0.1.0",
   "description": "",
   "scripts": {},
@@ -20,6 +20,7 @@
     "grunt-banner": "~0.2.3",
     "grunt-csscomb": "~2.0.1",
     "grunt-injector": "0.5.4",
-    "grunt-ng-annotate": "0.4.0"
+    "grunt-ng-annotate": "0.4.0",
+    "grunt-ng-constant": "1.0.0"
   }
 }

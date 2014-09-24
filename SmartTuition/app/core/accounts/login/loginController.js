@@ -1,6 +1,7 @@
 (function () {
     'use strict';
-    angular.module('CorsIntegration.Controllers.Accounts').controller("LoginController", loginController);
+    var controllerId = "LoginController";
+    angular.module('CorsIntegration.Controllers.Accounts').controller(controllerId, loginController);
 
     /* @ngInject */
     function loginController($scope, accountsService) {

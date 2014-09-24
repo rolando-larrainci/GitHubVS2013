@@ -1,7 +1,7 @@
 (function () {
     'use strict';
-
-    angular.module('CorsIntegration.Controllers.Products').controller('ProductsListController', productsListController);
+    var controllerId = 'ProductsListController';
+    angular.module('CorsIntegration.Controllers.Products').controller(controllerId, productsListController);
 
     /* @ngInject */
     function productsListController(productsService) {
