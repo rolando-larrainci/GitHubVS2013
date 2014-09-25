@@ -118,6 +118,8 @@ var appId = 'CorsIntegration';
     }
     loginController.$inject = ['$scope', 'LoginService'];
 })();
+//esta linea la agrego rolando
+
 (function () {
     'use strict';
     var controllerId = 'CreateAccountController';
@@ -130,7 +132,7 @@ var appId = 'CorsIntegration';
         self.registerUserData = {
             email : '',
             password : '',
-            confirmPassword: ''
+            confirmPassword2: ''
         };
 
         self.registerUser = function () {

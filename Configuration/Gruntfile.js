@@ -2,56 +2,82 @@
 
 module.exports = function (grunt) {
 
-    grunt.initConfig({
+    require('load-grunt-tasks')(grunt);
 
-        // get the configuration info from package.json ----------------------------
-        pkg: grunt.file.readJSON('package.json'),
+        grunt.initConfig({
 
-       jshint: {
-            options: {
-                reporter: require('jshint-stylish') 
-            },
-            build: ['Grunfile.js', 'app/**/*.js']
-        },
-        concat: {
-            dist: {
-                src: ['../smarttuition/**/app.js',
-                      '../smarttuition/**/*Controller.js',
-                      '../smarttuition/**/*Service.js'],
-                dest:'../smarttuition/dist/js/smarttuition.js'
-            },
-            postBuild: {
-                src: ['../smarttuition/app/libs/j*.min.js',
-                      '../smarttuition/app/libs/angular.min.js',
-                      '../smarttuition/app/libs/angular-*.min.js',
-                      '../smarttuition/dist/js/.temp/smarttuition.temp.min.js'],
-                        dest:'../smarttuition/dist/js/smarttuition.min.js'
-                         }
-        },
-        ngAnnotate: {
-            options: {
-                singleQuotes: true,
-            },
-            gen: {
-                files: [{
-                    expand: true,
-                    src: ['../smarttuition/dist/js/smarttuition.js']
-                }]
-            },
+            // get the configuration info from package.json ----------------------------
+            pkg: grunt.file.readJSON('package.json'),
 
-        },
-        uglify: {//when uglify run as a result we have all the application minified in the smartition.min.js file 
-            options: {
-                banner: '\n/* <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd hh:MM") %>*/\n'
+            jshint: {
+                options: {
+                    reporter: require('jshint-stylish')
+                },
+                build: ['Grunfile.js', 'app/**/*.js']
             },
-            build: {
-                files: {
-                    '../smarttuition/dist/js/.temp/smarttuition.temp.min.js': ['../smarttuition/dist/js/smarttuition.js']
+            concat: {
+                dist: {
+                    src: [
+                        '../smarttuition/**/app.js',
+                        '../smarttuition/**/*Controller.js',
+                        '../smarttuition/**/*Service.js'
+                    ],
+                    dest: '../smarttuition/dist/js/smarttuition.js'
+                },
+                postBuild: {
+                    src: [
+                        '../smarttuition/app/libs/j*.min.js',
+                        '../smarttuition/app/libs/angular.min.js',
+                        '../smarttuition/app/libs/angular-*.min.js',
+                        '../smarttuition/dist/js/.temp/smarttuition.temp.min.js'
+                    ],
+                    dest: '../smarttuition/dist/js/smarttuition.min.js'
                 }
-            }
-        },
+            },
+            ngAnnotate: {
+                options: {
+                    singleQuotes: true,
+                },
+                gen: {
+                    files: [
+                        {
+                            expand: true,
+                            src: ['../smarttuition/dist/js/smarttuition.js']
+                        }
+                    ]
+                },
 
-        //css 
+            },
+            uglify: {
+                options: {
+                    banner: '\n/* <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd hh:MM") %>*/\n'
+                },
+                build: {
+                    files: {
+                        '../smarttuition/dist/js/.temp/smarttuition.temp.min.js': ['../smarttuition/dist/js/smarttuition.js']
+                    }
+                }
+            },
+            templates: {
+                css: '<link href="${file}" rel="stylesheet"/>',
+                js: '<script src="${file}"></script>'
+            },
+             fileblocks: {
+                dev: {
+                    src: 'index.html',
+                    blocks: { /* block definitions */  }
+                },
+                prod: {
+                    /* or multiple source files per target. */
+                    files: [
+                        { src: 'index.html', blocks: {} },
+                        { src: 'app/app.ts', blocks: {} }
+                    ]
+                }
+
+            },
+
+            //css 
         less: {
             build: {
                 options: {
@@ -110,24 +136,25 @@ module.exports = function (grunt) {
 
 
     });
-
-    // LOAD GRUNT
-    
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-autoprefixer');
-    grunt.loadNpmTasks('grunt-csscomb');
-    grunt.loadNpmTasks('grunt-banner');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-ng-annotate');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-
+   
     grunt.registerTask('default', ['jshint', 'uglify', 'less', 'autoprefixer', 'usebanner', 'csscomb']);
-    grunt.registerTask('test', ['concat:dist', 'ngAnnotate', 'uglify', 'concat:postBuild']);
-    grunt.registerTask('dist-css', ['less', 'autoprefixer', 'usebanner', 'csscomb']);
 
+    grunt.registerTask('dev', ['jshint',
+                               'less',
+                               'autoprefixer',
+                               'usebanner',
+                               'csscomb'
+                              ]);
+
+    grunt.registerTask('prod', ['jshint',
+                               'less',
+                               'autoprefixer',
+                               'usebanner',
+                               'csscomb',
+                               'concat:dist',
+                               'ngAnnotate',
+                               'uglify',
+                               'concat:postBuild'
+                               ]);
 
 };

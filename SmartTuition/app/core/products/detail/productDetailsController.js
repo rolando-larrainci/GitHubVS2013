@@ -7,6 +7,7 @@
     function productDetailsController(productsService) {
         var self = this;
 
+
         self.loginData = {
             userName: '',
             password: ''
