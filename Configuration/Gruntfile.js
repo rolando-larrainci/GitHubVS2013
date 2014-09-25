@@ -104,7 +104,36 @@ module.exports = function (grunt) {
                 dest: 'dist/css/'
             }
         },
-
+        ngconstant: {
+            options: {
+                name: 'CorsIntegration.Configuration.constants',
+            },
+            dev: {
+                options: {
+                    dest: '../smarttuition/dist/js/constants.js'
+                },
+                constants: {
+                    ENV: {
+                        name: 'development',
+                        apiEndpoint: 'http://localhost:57496'
+                    }
+                },
+                values: {
+                    debug: true
+                }
+            },
+            prod: {
+                options: {
+                    dest: '../smarttuition/dist/js/constants.js'
+                },
+                constants: {
+                    ENV: {
+                        name: 'production',
+                        apiEndpoint: 'http://smartcare-api.azurewebsites.net'
+                    }
+                }
+            }
+        },
 
 
     });
@@ -122,10 +151,13 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-ng-annotate');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-ng-constant');
 
     grunt.registerTask('default', ['jshint', 'uglify', 'less', 'autoprefixer', 'usebanner', 'csscomb']);
     grunt.registerTask('test', ['concat:dist', 'ngAnnotate']);
     grunt.registerTask('dist-css', ['less', 'autoprefixer', 'usebanner', 'csscomb']);
 
+    grunt.registerTask('ngconstant-dev', ['ngconstant:dev']);
+    grunt.registerTask('ngconstant-prod', ['ngconstant:prod']);
 
 };

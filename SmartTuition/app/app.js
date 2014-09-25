@@ -5,14 +5,15 @@ var appId = 'CorsIntegration';
 (function () {
     'use strict';
 
-    angular.module('CorsIntegration.Services.Accounts', []).config(servicesConfig);
+    angular.module('CorsIntegration.Services.Accounts', ['CorsIntegration.Configuration.Constants']).config(servicesConfig);
     angular.module('CorsIntegration.Controllers.Products', ['CorsIntegration.Services.Accounts']);
     angular.module('CorsIntegration.Controllers.Accounts', ['CorsIntegration.Services.Accounts']);
     var app=angular.module('CorsIntegration', [
             'ngRoute',
             'CorsIntegration.Controllers.Products',
             'CorsIntegration.Controllers.Accounts',
-            'CorsIntegration.Services.Accounts'
+            'CorsIntegration.Services.Accounts',
+            'CorsIntegration.Configuration.constants'
         ])
         .config(appConfig);
 

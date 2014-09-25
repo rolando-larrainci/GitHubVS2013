@@ -4,14 +4,14 @@
     angular.module('CorsIntegration.Services.Accounts').factory(serviceId, loginService);
 
     /* @ngInject */
-    function loginService($http, $q) {
+    function loginService($http, $q, ENV) {
         // Define the functions and properties to reveal.
         var service = {
             loginUser: loginUser,
             getValues: getValues,
         };
 
-        var serverBaseUrl = "http://localhost:57496";
+        var serverBaseUrl = ENV.apiEndpoint;
         var accessToken = "";
      
         function loginUser(userData) {
