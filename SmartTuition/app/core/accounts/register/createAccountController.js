@@ -13,7 +13,9 @@
             email : '',
             password : '',
             confirmPassword: '',
-            confirmPassword3: ''
+            unomas: '',
+            confirmPassword3: '',
+            aversiestalinearompetodo: 'rompedor'
         };
 
         self.registerUser = function () {
