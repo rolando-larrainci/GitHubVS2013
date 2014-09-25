@@ -10,8 +10,7 @@
         self.registerUserData = {
             email : '',
             password : '',
-            confirmPassword: '',
-            confirmPassword2: '',
+            confirmPassword: ''
         };
 
         self.registerUser = function () {
