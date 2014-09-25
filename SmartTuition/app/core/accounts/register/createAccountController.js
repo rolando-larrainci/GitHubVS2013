@@ -13,7 +13,8 @@
             email : '',
             password : '',
             confirmPassword: '',
-            confirmPassword3: ''
+            confirmPassword3: '',
+            confirmPassword2: ''
         };
 
         self.registerUser = function () {
