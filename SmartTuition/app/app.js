@@ -1,4 +1,3 @@
-// Module name is handy for logging
 var appId = 'CorsIntegration';
 
 

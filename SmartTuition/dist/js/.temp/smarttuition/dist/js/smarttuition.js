@@ -37,8 +37,7 @@ var appId = 'CorsIntegration';
             .otherwise({
                 redirectTo: '/login'
             });
-    }
-    appConfig.$inject = ['$routeProvider'];;
+    };
 
 
     /* @ngInject */
@@ -84,8 +83,7 @@ var appId = 'CorsIntegration';
 
             return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
         }];
-    }
-    servicesConfig.$inject = ['$httpProvider'];;
+    };
 
 
     app.run(['$q', '$rootScope', function ($q, $rootScope) {}]);
@@ -116,7 +114,6 @@ var appId = 'CorsIntegration';
             });
         };
     }
-    loginController.$inject = ['$scope', 'LoginService'];
 })();
 (function () {
     'use strict';
@@ -148,7 +145,6 @@ var appId = 'CorsIntegration';
             });
         };
     }
-    createAccountController.$inject = ['$scope', 'createAccountService'];
 })();
 (function () {
     'use strict';
@@ -176,7 +172,6 @@ var appId = 'CorsIntegration';
             });
         };
     }
-    productDetailsController.$inject = ['productsService'];
 })();
 (function () {
     'use strict';
@@ -204,7 +199,6 @@ var appId = 'CorsIntegration';
             });
         };
     }
-    productsListController.$inject = ['productsService'];
 })();
 (function () {
     'use strict';
@@ -273,7 +267,6 @@ var appId = 'CorsIntegration';
         return service;
 
     }
-    loginService.$inject = ['$http', '$q'];
 
 })();
 (function () {
@@ -292,7 +285,7 @@ var appId = 'CorsIntegration';
         var accessToken = "";
 
         function registerUser(userData) {
-            var accountUrl = serverBaseUrl + "/api/Account/Register";
+            var accountUrl = serverBaseUrl + ""http://localhost:57496";/api/Account/Register";
             var deferred = $q.defer();
             $http({
                 method: 'POST',
@@ -336,5 +329,4 @@ var appId = 'CorsIntegration';
         return service;
 
     }
-    accountsService.$inject = ['$http', '$q'];
 })();

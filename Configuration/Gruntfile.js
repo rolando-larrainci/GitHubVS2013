@@ -21,8 +21,10 @@ module.exports = function (grunt) {
                 dest:'../smarttuition/dist/js/smarttuition.js'
             },
             postBuild: {
-                        src: ['../smarttuition/app/libs/**.min.js',
-                              '../smarttuition/dist/js/.temp/smarttuition.min.js'],
+                src: ['../smarttuition/app/libs/j*.min.js',
+                      '../smarttuition/app/libs/angular.min.js',
+                      '../smarttuition/app/libs/angular-*.min.js',
+                      '../smarttuition/dist/js/.temp/smarttuition.temp.min.js'],
                         dest:'../smarttuition/dist/js/smarttuition.min.js'
                          }
         },
@@ -33,7 +35,7 @@ module.exports = function (grunt) {
             gen: {
                 files: [{
                     expand: true,
-                    src: ['../smarttuition/dist/js/smarttuition.js'],
+                    src: ['../smarttuition/dist/js/smarttuition.js']
                 }]
             },
 
@@ -44,7 +46,7 @@ module.exports = function (grunt) {
             },
             build: {
                 files: {
-                    '../smarttuition/dist/js/.temp/smarttuition.min.js': ['../smarttuition/dist/js/smarttuition.js']
+                    '../smarttuition/dist/js/.temp/smarttuition.temp.min.js': ['../smarttuition/dist/js/smarttuition.js']
                 }
             }
         },
@@ -124,7 +126,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
 
     grunt.registerTask('default', ['jshint', 'uglify', 'less', 'autoprefixer', 'usebanner', 'csscomb']);
-    grunt.registerTask('test', ['concat:dist', 'ngAnnotate']);
+    grunt.registerTask('test', ['concat:dist', 'ngAnnotate', 'uglify', 'concat:postBuild']);
     grunt.registerTask('dist-css', ['less', 'autoprefixer', 'usebanner', 'csscomb']);
 
 
