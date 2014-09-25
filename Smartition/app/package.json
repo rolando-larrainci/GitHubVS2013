@@ -17,7 +17,8 @@
 	"bootstrap":"latest",
 	"grunt-autoprefixer": "~0.7.6",
     "grunt-banner": "~0.2.3",
-    "grunt-csscomb": "~2.0.1"
+    "grunt-csscomb": "~2.0.1",
+    "grunt-injector": "latest"
 
   }
 }

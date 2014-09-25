@@ -54,12 +54,14 @@ module.exports = function (grunt) {
             },
             build: {
                 files: {
-                    'dist/js/smartition.min.js': ['app.js',
+                    'dist/js/smartition.min.js': [ 'libs/angular.js',
+                                                   'libs/angular-route.js',
+                                                   'libs/jquery-2.1.1.js',
+                                                   'accounts/**/*Service.js',
                                                    'accounts/**/*Controller.js',
-                                                   'accounts/**/*Services.js',
-                                                   'products/**/*Service.js',
                                                    'products/**/*Controller.js',
-                                                   'GruntFile.js']
+                                                   'main/*Controller.js',
+                                                   'app.js']
                 }
             }
         },
@@ -133,7 +135,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-
+    grunt.registerTask('default', ['jshint', 'uglify', 'less', 'autoprefixer', 'usebanner', 'csscomb']);
     grunt.registerTask('dist-css', ['less', 'autoprefixer', 'usebanner', 'csscomb']);
 
 

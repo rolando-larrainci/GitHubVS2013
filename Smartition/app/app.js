@@ -12,9 +12,9 @@ var productDetailsControllerId = 'ProductDetailsController';
     'use strict';
 
     // Create the module and define its dependencies.
-    var app = angular.module(appId, ['ngRoute', appControllersId, 'CorsIntegration.Services']);
-    var services=angular.module(serviceModule, []);
+    var services = angular.module(serviceModule, []);
     angular.module(appControllersId, ['CorsIntegration.Services']);
+    var app = angular.module(appId, ['ngRoute', appControllersId, 'CorsIntegration.Services']);
 
     app.config(function ($routeProvider) {
         $routeProvider
