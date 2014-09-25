@@ -14,7 +14,7 @@
         var accessToken = "";
 
         function registerUser(userData) {
-            var accountUrl = serverBaseUrl + ""http://localhost:57496";/api/Account/Register";
+            var accountUrl = serverBaseUrl + "/api/Account/Register";
             var deferred = $q.defer();
             $http({
                 method: 'POST',
