@@ -7,7 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiService", "WebApiServ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJsClient.Test", "AngularJsClient.Test\AngularJsClient.Test.csproj", "{0ED7C66A-F487-424E-A9B8-B2299C17210C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smartition", "Smartition\Smartition.csproj", "{ADCD40F2-6CD2-45CF-82A3-CD5443405042}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmarTuition", "SmartTuition\SmarTuition.csproj", "{D9A737DA-CD93-4279-9FDC-FC9524958B7B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{4D8BAC08-DEA7-4E50-8D97-BA1EF98A1E3C}"
+	ProjectSection(SolutionItems) = preProject
+		Configuration\Gruntfile.js = Configuration\Gruntfile.js
+		Configuration\package.json = Configuration\package.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +29,10 @@ Global
 		{0ED7C66A-F487-424E-A9B8-B2299C17210C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ED7C66A-F487-424E-A9B8-B2299C17210C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ED7C66A-F487-424E-A9B8-B2299C17210C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ADCD40F2-6CD2-45CF-82A3-CD5443405042}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ADCD40F2-6CD2-45CF-82A3-CD5443405042}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ADCD40F2-6CD2-45CF-82A3-CD5443405042}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ADCD40F2-6CD2-45CF-82A3-CD5443405042}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9A737DA-CD93-4279-9FDC-FC9524958B7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9A737DA-CD93-4279-9FDC-FC9524958B7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9A737DA-CD93-4279-9FDC-FC9524958B7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9A737DA-CD93-4279-9FDC-FC9524958B7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
