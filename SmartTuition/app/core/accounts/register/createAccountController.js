@@ -12,11 +12,7 @@
         self.registerUserData = {
             email : '',
             password : '',
-            confirmPassword: '',
-            confirmPassword2: ''
-            unomas: '',
-            confirmPassword3: '',
-            aversiestalinearompetodo: 'rompedor'
+            confirmPassword: ''
         };
 
         self.registerUser = function () {
