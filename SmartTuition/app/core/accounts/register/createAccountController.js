@@ -1,3 +1,5 @@
+//esta linea la agrego rolando
+
 (function () {
     'use strict';
     var controllerId = 'CreateAccountController';
@@ -10,7 +12,8 @@
         self.registerUserData = {
             email : '',
             password : '',
-            confirmPassword: ''
+            confirmPassword: '',
+            confirmPassword3: ''
         };
 
         self.registerUser = function () {
