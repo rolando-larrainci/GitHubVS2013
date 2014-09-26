@@ -1,6 +1,3 @@
-var appId = 'CorsIntegration';
-
-
 (function () {
     'use strict';
 

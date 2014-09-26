@@ -57,19 +57,34 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\core\accounts\login\loginService.js" />
-    <Content Include="app\styles\bootstrap.css" />
+    <Content Include="App\Core\accounts\login\loginService.js" />
+    <Content Include="App\styles\bootstrap.css" />
+    <Content Include="App_Build\smarttuition.min.js" />
+    <Content Include="App_Build\temp\app.js" />
+    <Content Include="App_Build\temp\app.min.js" />
+    <Content Include="App_Build\temp\Core\accounts\login\loginController.js" />
+    <Content Include="App_Build\temp\Core\accounts\login\loginController.min.js" />
+    <Content Include="App_Build\temp\Core\accounts\login\loginService.js" />
+    <Content Include="App_Build\temp\Core\accounts\login\loginService.min.js" />
+    <Content Include="App_Build\temp\Core\accounts\register\createAccountController.js" />
+    <Content Include="App_Build\temp\Core\accounts\register\createAccountController.min.js" />
+    <Content Include="App_Build\temp\Core\accounts\register\createAccountsService.js" />
+    <Content Include="App_Build\temp\Core\accounts\register\createAccountsService.min.js" />
+    <Content Include="App_Build\temp\Core\products\detail\productDetailsController.js" />
+    <Content Include="App_Build\temp\Core\products\detail\productDetailsController.min.js" />
+    <Content Include="App_Build\temp\Core\products\list\productsListController.js" />
+    <Content Include="App_Build\temp\Core\products\list\productsListController.min.js" />
     <Content Include="dist\js\smarttuition.js" />
     <Content Include="dist\js\smarttuition.min.js" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="app\.bin\bower.cmd" />
-    <Content Include="app\.bin\git.cmd" />
-    <Content Include="app\.bin\grunt.cmd" />
-    <Content Include="app\.bin\node.cmd" />
-    <Content Include="app\.bin\npm.cmd" />
-    <Content Include="app\styles\bootstrap.css.map" />
+    <Content Include="App\.bin\bower.cmd" />
+    <Content Include="App\.bin\git.cmd" />
+    <Content Include="App\.bin\grunt.cmd" />
+    <Content Include="App\.bin\node.cmd" />
+    <Content Include="App\.bin\npm.cmd" />
+    <Content Include="App\styles\bootstrap.css.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -78,33 +93,33 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\core\accounts\login\loginController.js" />
-    <Content Include="app\app.js" />
-    <Content Include="app\core\accounts\register\createAccountController.js" />
-    <Content Include="app\core\products\detail\productDetailsController.js" />
-    <Content Include="app\core\products\list\productsListController.js" />
-    <Content Include="app\libs\angular-mocks.js" />
-    <Content Include="app\libs\angular-route.js" />
-    <Content Include="app\libs\angular-route.min.js" />
-    <Content Include="app\libs\angular.js" />
-    <Content Include="app\libs\angular.min.js" />
-    <Content Include="app\libs\jquery-2.1.1.js" />
-    <Content Include="app\libs\jquery-2.1.1.min.js" />
-    <Content Include="app\core\accounts\register\createAccountsService.js" />
-    <Content Include="app\core\accounts\register\createAccountControllerSpec.js" />
-    <Content Include="app\core\accounts\register\createAccount.html" />
-    <Content Include="app\core\accounts\login\login.html" />
-    <Content Include="app\index.html" />
-    <Content Include="app\core\products\detail\productDetails.html" />
-    <Content Include="app\core\products\list\productsList.html" />
+    <Content Include="App\Core\accounts\login\loginController.js" />
+    <Content Include="App\app.js" />
+    <Content Include="App\Core\accounts\register\createAccountController.js" />
+    <Content Include="App\Core\products\detail\productDetailsController.js" />
+    <Content Include="App\Core\products\list\productsListController.js" />
+    <Content Include="App\libs\angular-mocks.js" />
+    <Content Include="App\libs\angular-route.js" />
+    <Content Include="App\libs\angular-route.min.js" />
+    <Content Include="App\libs\angular.js" />
+    <Content Include="App\libs\angular.min.js" />
+    <Content Include="App\libs\jquery-2.1.1.js" />
+    <Content Include="App\libs\jquery-2.1.1.min.js" />
+    <Content Include="App\Core\accounts\register\createAccountsService.js" />
+    <Content Include="App\Core\accounts\register\createAccountControllerSpec.js" />
+    <Content Include="App\Core\accounts\register\createAccount.html" />
+    <Content Include="App\Core\accounts\login\login.html" />
+    <Content Include="App\index.html" />
+    <Content Include="App\Core\products\detail\productDetails.html" />
+    <Content Include="App\Core\products\list\productsList.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\core\accounts\services\" />
-    <Folder Include="app\shared\" />
+    <Folder Include="App\Core\accounts\services\" />
+    <Folder Include="App\shared\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
