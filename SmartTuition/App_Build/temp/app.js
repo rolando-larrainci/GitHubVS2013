@@ -34,7 +34,8 @@
             .otherwise({
                 redirectTo: '/login'
             });
-    };
+    }
+    appConfig.$inject = ['$routeProvider'];;
 
 
     /* @ngInject */
@@ -80,7 +81,8 @@
 
             return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
         }];
-    };
+    }
+    servicesConfig.$inject = ['$httpProvider'];;
 
 
     app.run(['$q', '$rootScope', function ($q, $rootScope) {}]);

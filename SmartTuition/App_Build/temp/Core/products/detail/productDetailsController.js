@@ -25,4 +25,5 @@
             });
         };
     }
+    productDetailsController.$inject = ['productsService'];
 })();

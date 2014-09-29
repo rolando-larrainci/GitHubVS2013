@@ -1,12 +1,11 @@
 (function () {
     'use strict';
-    var controllerId = 'ProductDetailsController';
-    angular.module('CorsIntegration.Controllers.Products').controller(controllerId, productDetailsController);
+    var controllerId = 'ProductsListController';
+    angular.module('CorsIntegration.Controllers.Products').controller(controllerId, productsListController);
 
     /* @ngInject */
-    function productDetailsController(productsService) {
+    function productsListController(productsService) {
         var self = this;
-
 
         self.loginData = {
             userName: '',
@@ -25,4 +24,5 @@
             });
         };
     }
+    productsListController.$inject = ['productsService'];
 })();

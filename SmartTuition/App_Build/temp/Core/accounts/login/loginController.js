@@ -1,20 +1,18 @@
 (function () {
     'use strict';
-    var controllerId = 'ProductDetailsController';
-    angular.module('CorsIntegration.Controllers.Products').controller(controllerId, productDetailsController);
+    var controllerId = "LoginController";
+    angular.module('CorsIntegration.Controllers.Accounts').controller(controllerId, loginController);
 
     /* @ngInject */
-    function productDetailsController(productsService) {
-        var self = this;
-
-
+    function loginController($scope, LoginService) {
+        var self = $scope;
         self.loginData = {
             userName: '',
             password: ''
         };
 
         self.loginUser = function () {
-            productsService.loginUser(self.loginData).then(function (data) {
+            LoginService.loginUser(self.loginData).then(function (data) {
                 self.isLoggedIn = true;
                 self.userName = data.userName;
                 self.bearerToken = data.access_token;
@@ -25,4 +23,5 @@
             });
         };
     }
+    loginController.$inject = ['$scope', 'LoginService'];
 })();
