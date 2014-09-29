@@ -130,11 +130,9 @@ module.exports = function (grunt) {
 					strictMath: true,
 					sourceMap: true,
 					outputSourceFiles: true,
-					sourceMapURL: 'styles/bootstrap/docs/dist/css/bootstrap.css.map',
-					sourceMapFilename: 'dist/css/bootstrap.css.map'
 				},
 				files: {
-					'dist/css/bootstrap.css': 'styles/content/less/bootstrap.less'
+					'<%= globalConfig.build %>/css/bootstrap.css': '<%= globalConfig.src %>/styles/less/bootstrap.less'
 				}
 			}
 		},
@@ -155,7 +153,7 @@ module.exports = function (grunt) {
 				options: {
 					map: true
 				},
-				src: 'dist/css/bootstrap.css'
+				src: '<%= globalConfig.build %>/css/bootstrap.css'
 			},
 		},
 		csscomb: {
@@ -180,7 +178,7 @@ module.exports = function (grunt) {
                                'fileblocks:dev'
                                ]);
 
-    grunt.registerTask('default', ['jshint', 'uglify', 'less', 'autoprefixer', 'usebanner', 'csscomb']);
+    grunt.registerTask('default', ['less', 'autoprefixer' ,'csscomb']);
 
     grunt.registerTask('dev', ['jshint',
                                'less',
